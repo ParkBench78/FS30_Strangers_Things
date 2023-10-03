@@ -1,15 +1,15 @@
-// FS30-StrangersThings-Register.jsx
+// FS30-StrangersThings-logni.jsx
 
 import { useState } from "react";
 import { APIURL } from "../API/api";
 
-export default function Register({ token, setToken }) {
+export default function LoginForm({ token, setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerUser = async () => {
+  const login = async () => {
     try {
-      const response = await fetch(`${APIURL}/users/register`, {
+      const response = await fetch(`${APIURL}/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,8 +22,6 @@ export default function Register({ token, setToken }) {
         }),
       });
       const result = await response.json();
-      // You can log ▲▲▲ the result
-      // here ▼▼▼ to view the json object before returning it
       console.log(result);
       return result;
     } catch (err) {
@@ -37,10 +35,11 @@ export default function Register({ token, setToken }) {
       alert("Username & Password must be greater than 5 characters");
       return;
     }
-    const result = await registerUser();
+    const result = await login();
+
     if (result.success) {
       setToken(result.data.token);
-      alert("Successful Registration!🥂" + `${result.data.message}`);
+      alert("Successful Login!🥂");
     } else {
       alert(`Bummer!😱 ${result.error.message}`);
     }
@@ -49,7 +48,7 @@ export default function Register({ token, setToken }) {
   }
   return (
     <>
-      <h1 className="login-title">Sign Up</h1>
+      <h1 className="login-title">Log In</h1>
 
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
@@ -73,7 +72,7 @@ export default function Register({ token, setToken }) {
           </label>
         </div>
         <button type="submit" className="login-button">
-          SIGN UP
+          LOG IN
         </button>
       </form>
     </>

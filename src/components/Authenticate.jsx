@@ -1,27 +1,29 @@
-import { useState } from "react";
-// import "./index.js";
-const COHORT_NAME = "2306-FTB-ET-WEB-PT";
-const APIURL = "https://strangers-things.herokuapp.com/api/${COHORT_NAME}";
+// FS30-StrangersThings-Authenticate.jsx
 
-function Authenticate({ token }) {
+import { useState } from "react";
+
+export default function Authenticate({ token }) {
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState("");
 
   async function handleClick() {
-    // setSuccessMessage(null);
+    //setSuccessMessage(null;)
     try {
-      const response = await fetch(`${APIURL}/users/me`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://fsa-jwt-practice.herokuapp.com/authenticate",
+        {
+          method: "GET",
+          header: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const result = await response.json();
       setMessage(result.message);
-      setUsername(result.data.username.username);
+      setUsername(result.data.username, username);
       console.log(result.data);
     } catch (error) {
       setError(error.message);
@@ -29,7 +31,7 @@ function Authenticate({ token }) {
   }
   return (
     <div className="form">
-      <h3>Next, Click Authenticate Token!</h3>
+      <h3>Next, Click "Authenticate Token"!</h3>
 
       {message && message == "Correctly Authenticated!" ? (
         <p className="yea">{`${username}, you have been ${message}`}</p>
@@ -47,5 +49,3 @@ function Authenticate({ token }) {
     </div>
   );
 }
-
-export default Authenticate;

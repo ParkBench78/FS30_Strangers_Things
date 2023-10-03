@@ -1,69 +1,204 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* FS30-StrangersThings-index.css */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* index.css */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html {
+  color-scheme: dark;
 }
 
 body {
-  margin: 0;
+  color: #eee;
+  font-size: 1.125rem;
+  font-family: system-ui;
+  line-height: 1.5;
+}
+.wrapper {
+  margin-inline: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #323232;
+}
+
+caption,
+th,
+td {
+  padding: 1rem;
+}
+
+caption,
+th {
+  color: yellow;
+  text-shadow: 2px 2px rgb(200 0 0);
+  text-align: left;
+}
+
+caption {
+  background: hsl(0 0% 0%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.search {
+  color: red;
+}
+
+.searchbar {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.search:hover {
   cursor: pointer;
-  transition: border-color 0.25s;
+}
+
+th {
+  font-weight: 500;
+  font-size: x-large;
+  background: hsl(0 0% 0%/0.5);
+}
+
+tr:nth-of-type(2n) {
+  background: hsl(0 0% 0%/0.2);
+}
+
+@media (max-width: 650px) {
+  th {
+    display: none;
+  }
+  td {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+  td:first-child {
+    padding-top: 2rem;
+  }
+  td:last-child {
+    padding-bottom: 2rem;
+  }
+}
+
+.flexclass {
+  display: flex;
+}
+button {
+  margin-right: 10px;
+  background-color: rgb(200 0 0);
+  color: white;
+  border: none;
+  height: 36px;
+  width: 105px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 1s, color 1s;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: white;
+  color: rgb(200 0 0);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:active {
+  opacity: 0.7;
+}
+
+.image {
+  width: 200px;
+}
+
+input {
+  margin-left: 10px;
+}
+
+.navbar {
+  border: 3px solid rgb(67, 25, 107);
+  display: flex;
+  background-color: rgb(98, 70, 209);
+}
+
+.link {
+  justify-content: right;
+  color: yellow;
+  text-shadow: 1px 1px rgb(46, 44, 44);
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: x-large;
+  padding: 30px 0px 45px 0px;
+}
+
+#navbar:hover {
+  background: hsl(0 0% 0%);
+}
+
+.spacer {
+  flex: 1;
+  justify-content: right;
+  color: rgb(255, 123, 0);
+  text-shadow: 2px 2px red;
+  margin-right: 20px;
+  padding: 13px 0px 30px 0px;
+  text-decoration: none;
+  font-size: xx-large;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  width: 150px;
+}
+
+#entry {
+  box-sizing: border-box;
+  background-color: rgb(41, 40, 45);
+  padding: 80px 100px;
+  border: 3px solid rgb(67, 25, 107);
+  margin: auto;
+  width: 400px;
+  left: 100px;
+  right: 100px;
+  top: 200px;
+  position: absolute;
+}
+.selectedPlayerContainer {
+  box-sizing: border-box;
+  padding: 50px;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+.form {
+  text-align: center;
+}
+
+form > h2 {
+  text-align: center;
+}
+
+.left-margin {
+  margin-left: 20px;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: normal;
+  color: rgb(159, 75, 75);
+}
+
+#entry > h2 {
+  color: yellow;
+  text-shadow: 2px 2px rgb(200 0 0);
+}
+
+.title {
+  font-size: 1.75em;
+  color: chartreuse;
+}
+.border {
+  border: 3px solid red;
+}
+.padding20 {
+  padding: 20px;
 }
