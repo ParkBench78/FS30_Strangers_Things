@@ -1,7 +1,0 @@
-// FS30-StrangersThings-NavBar.jsx
-
-function NavBar() {
-  console.log("the NavBar component");
-}
-
-export default NavBar;

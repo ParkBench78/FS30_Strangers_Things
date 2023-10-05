@@ -32,31 +32,28 @@ export default function PostList({ token }) {
   }, []);
   return (
     <>
-      <h1>POSTS</h1>
-      <label>
-        Search
-        <input
-          type="text"
-          placeholder="Looking for..."
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-      </label>
+      <div>
+        <label className="search">
+          Search
+          <input
+            type="text"
+            placeholder="Looking for..."
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+        </label>
+        <h1>POSTS</h1>
+        <br />
+      </div>
       <div>
         {posts &&
           posts.filter(filterPost).map((post) => {
-            return (
-              <PostView
-                key={post._id}
-                post={post}
-
-                // fetchPosts={fetchPosts}
-              />
-            );
+            return <PostView key={post._id} post={post} token={token} />;
           })}
       </div>
+      <br />
     </>
   );
 }

@@ -12,6 +12,7 @@ export default function Profile({ token }) {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
+  const [location, setLocation] = useState("");
 
   // API
   const myData = async () => {
@@ -80,6 +81,13 @@ export default function Profile({ token }) {
   useEffect(() => {
     const result = myData();
   }, []);
+  function resetInput() {
+    setTitle("");
+    setDescription("");
+    setPrice("");
+    setLocation("");
+    setWillDeliver("");
+  }
 
   async function handleAdd(e) {
     e.preventDefault();
@@ -87,11 +95,15 @@ export default function Profile({ token }) {
     //Form validation checks here
 
     //API call to add post
+
     const result = await makePost();
+    await myData();
+    resetInput();
   }
   async function handleDelete(post) {
     await deletePost(post._id);
-    const result = myData();
+    await myData();
+    resetInput();
   }
   async function getData() {
     await myData();

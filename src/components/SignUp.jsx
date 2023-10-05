@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { APIURL } from "../API/api";
 
-export default function Register({ token, setToken }) {
+export default function SignUp({ token, setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,6 +33,7 @@ export default function Register({ token, setToken }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setUsername(username.toLowerCase());
     if (username.length < 6 || password.length < 6) {
       alert("Username & Password must be greater than 5 characters");
       return;

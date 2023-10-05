@@ -6,8 +6,7 @@ import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import PostList from "./components/PostList.jsx";
 import LoginForm from "./components/LoginForm.jsx";
-import Home from "./components/Home.jsx";
-import Register from "./components/Register.jsx";
+import SignUp from "./components/SignUp.jsx";
 import Profile from "./components/Profile";
 
 export default function App() {
@@ -18,7 +17,7 @@ export default function App() {
         <div className="navbar">
           <h1 className="spacer">Stranger's Things</h1>
           <Link className="link" to="/">
-            HOME
+            LOGIN
           </Link>
           <Link className="link" to="/postlist">
             POSTS
@@ -28,25 +27,22 @@ export default function App() {
               PROFILE
             </Link>
           )}
-          <Link className="link" to="/login">
-            LOGIN
-          </Link>
-          <Link className="link" to="/register">
-            REGISTER
+          <Link className="link" to="/signup">
+            SIGN UP
           </Link>
         </div>
         <div>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={<LoginForm token={token} setToken={setToken} />}
+            />
             <Route path="/postlist" element={<PostList token={token} />} />
             {token && (
               <Route path="/profile" element={<Profile token={token} />} />
             )}
-            <Route path="/login" element={<LoginForm setToken={setToken} />} />
-            <Route
-              path="/register"
-              element={<Register setToken={setToken} />}
-            />
+
+            <Route path="/signup" element={<SignUp setToken={setToken} />} />
           </Routes>
         </div>
       </div>

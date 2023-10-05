@@ -1,6 +1,6 @@
 // FS30-StrangersThings-logni.jsx
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { APIURL } from "../API/api";
 
 export default function LoginForm({ token, setToken }) {
@@ -31,6 +31,8 @@ export default function LoginForm({ token, setToken }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setUsername(username.toLowerCase());
+    console.log(username);
     if (username.length < 6 || password.length < 6) {
       alert("Username & Password must be greater than 5 characters");
       return;
@@ -46,35 +48,41 @@ export default function LoginForm({ token, setToken }) {
 
     console.log("Form Submitted✅");
   }
+
   return (
     <>
-      <h1 className="login-title">Log In</h1>
-
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label>
-            Username
-            <input
-              type="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className="input-group">
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit" className="login-button">
-          LOG IN
-        </button>
-      </form>
+      <h1 className="login-title">{token ? "Log Out" : "Log In"}</h1>
+      <div>
+        {token ? (
+          <button onClick={() => setToken("")}>Log Out</button>
+        ) : (
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label className="label-login">
+                Username
+                <input
+                  type="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className="input-group">
+              <label className="label-login">
+                Password
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
+            <button type="submit" id="login-button">
+              LOG IN
+            </button>
+          </form>
+        )}
+      </div>
     </>
   );
 }

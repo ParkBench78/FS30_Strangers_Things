@@ -45,7 +45,8 @@ export default function EditPostView({ post, reRender, token }) {
 
     //API call to add post
     const result = await updatePost(post);
-    reRender();
+    setIsEditing(false);
+    await reRender();
   }
   useEffect(() => {
     function initData() {
@@ -59,7 +60,6 @@ export default function EditPostView({ post, reRender, token }) {
   }, []);
   return (
     <div>
-      <div>EditPostView</div>
       <PostView post={post} />
       <button
         onClick={() => {
