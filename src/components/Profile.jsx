@@ -47,6 +47,7 @@ export default function Profile({ token }) {
             title: title,
             description: description,
             price: price,
+            seller: seller,
             willDeliver: willDeliver,
           },
         }),
@@ -110,10 +111,10 @@ export default function Profile({ token }) {
   }
   return (
     <div>
-      <div>{`Welcome ${username}!`} </div>
-      <form onSubmit={handleAdd}>
+      <div className="welcome">{`Welcome to your profile, ${username}!`}</div>
+      <form onSubmit={handleAdd} className="card flex">
         <label>
-          <div className="title">Title</div>
+          <div className="title">TITLE:</div>
           <input
             type="text"
             value={title}
@@ -123,7 +124,7 @@ export default function Profile({ token }) {
           />
         </label>
         <label>
-          <div className="description">Description</div>
+          <div className="description">DESCRIPTION:</div>
           <input
             type="text"
             value={description}
@@ -133,7 +134,7 @@ export default function Profile({ token }) {
           />
         </label>
         <label>
-          <div className="price">Price</div>
+          <div className="price">PRICE:</div>
           <input
             type="text"
             value={price}
@@ -143,15 +144,15 @@ export default function Profile({ token }) {
           />
         </label>
         <label>
-          <div>Will Deliver:</div>
+          <div>WILL DELIVER:</div>
           <select
             value={willDeliver}
             onChange={(e) => {
               setWillDeliver(e.target.value);
             }}
           >
-            <option value={false}>false</option>
-            <option value={true}>true</option>
+            <option value={false}>NO</option>
+            <option value={true}>YES</option>
           </select>
         </label>
         <br />
@@ -161,7 +162,7 @@ export default function Profile({ token }) {
         </button>
       </form>
       <div>
-        <h1>Active Posts</h1>
+        <h1 className="subtitle">Your Active Posts</h1>
         {posts &&
           posts
             .filter((post) => {
@@ -169,7 +170,7 @@ export default function Profile({ token }) {
             })
             .map((post) => {
               return (
-                <div key={`${post._id}container`}>
+                <div className="card" key={`${post._id}container`}>
                   {/* <PostView key={post._id} post={post} /> */}
                   <EditPostView
                     key={post._id}
@@ -189,14 +190,14 @@ export default function Profile({ token }) {
             })}
       </div>
       <div>
-        <h1>Inactive</h1>
+        <h1 className="subtitle">Deleted Posts</h1>
         {posts &&
           posts
             .filter((post) => post.active === false)
             .map((post) => {
               return (
                 <div key={`${post._id}container`}>
-                  <PostView key={post._id} post={post} />
+                  <PostView key={post._id} post={post} token={token} />
                   <div>(Deleted Post)</div>
                 </div>
               );

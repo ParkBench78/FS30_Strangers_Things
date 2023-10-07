@@ -4,7 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
 }
 
 html {
@@ -13,7 +13,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .search {
@@ -56,8 +56,8 @@ input {
   background-color: rgb(24, 58, 160);
 }
 
-#navbar:hover {
-  background: hsl(0 0% 0%);
+.link:hover {
+  text-decoration: underline 5px red;
 }
 
 .link {
@@ -68,21 +68,21 @@ input {
   text-decoration: none;
   font-size: x-large;
   padding: 30px 0px 45px 0px;
+  font-weight: bolder;
 }
 
-#navbar:hover {
-  background: hsl(0 0% 0%);
+.header-links {
+  display: flex;
 }
-
-.spacer {
+.nav-title {
+  font-family: "Courier New", Courier, monospace;
   flex: 1;
-  justify-content: right;
   color: yellow;
   text-shadow: 2px 2px black;
-  margin-right: 20px;
-  padding: 13px 0px 30px 0px;
+  padding-left: 20px;
   text-decoration: none;
-  font-size: xx-large;
+  font-size: 2rem;
+  text-align: left;
 }
 
 .form {
@@ -108,18 +108,12 @@ form > h2 {
 
 h1,
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: yellow;
   text-align: center;
 }
 
-#entry > h2 {
-  color: yellow;
-  text-shadow: 2px 2px rgb(200 0 0);
-}
-
-.title {
+.post-title {
   font-size: 1.75em;
   color: yellow;
 }
@@ -129,7 +123,6 @@ h2 {
 .padding20 {
   padding: 20px;
 }
-/* login css */
 
 .login-title {
   margin: 20px;
@@ -156,7 +149,7 @@ h2 {
 label {
   display: flex;
   gap: 7px;
-  color: rgb(57, 100, 227);
+  color: red;
   font-weight: lighter;
 }
 
@@ -170,20 +163,46 @@ label {
   font-weight: lighter;
 }
 
-.postview {
-  border: 2px solid blue;
-}
-
 .card {
+  border: 3px solid rgb(105, 88, 88);
   display: flex;
-  flex-direction: column;
-  background-color: blackw;
-  border: 2px solid black;
-  color: rgb(57, 100, 227);
+  background-color: black;
+  color: white;
   padding: 15px;
   margin: 3px;
-  box-shadow: 4px 4px 2px 4px rgb(66, 62, 62);
+  box-shadow: 1px rgb(66, 62, 62);
   transition: 0.3s;
-  width: 100%;
+  width: 99%;
   justify-content: space-evenly;
+}
+
+#logoutcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome,
+.subtitle {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  color: yellow;
+  padding: 10px;
+}
+.subtitle {
+  text-decoration: underline 3px solid yellow;
+}
+
+.widerinput {
+  width: 400px;
+}
+
+.flex {
+  display: flex;
+}
+
+.posts-view {
+  margin: auto;
+  width: 98%;
 }

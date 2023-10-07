@@ -17,7 +17,12 @@ export default function PostList({ token }) {
 
   async function fetchPosts() {
     try {
-      const response = await fetch(`${APIURL}/posts`);
+      const response = await fetch(`${APIURL}/posts`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const results = await response.json();
       setPosts(results.data.posts);
       console.log(results.data.posts);
@@ -44,7 +49,7 @@ export default function PostList({ token }) {
             }}
           />
         </label>
-        <h1>POSTS</h1>
+        <h1 className="subtitle">POSTS</h1>
         <br />
       </div>
       <div>

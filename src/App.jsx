@@ -11,37 +11,48 @@ import Profile from "./components/Profile";
 
 export default function App() {
   const [token, setToken] = useState(null);
+  const [username, setUsername] = useState("");
+
   return (
     <>
       <div id="container">
         <div className="navbar">
-          <h1 className="spacer">Stranger's Things</h1>
-          <Link className="link" to="/">
-            LOGIN
-          </Link>
-          <Link className="link" to="/postlist">
-            POSTS
-          </Link>
-          {token && (
-            <Link className="link" to="/profile">
-              PROFILE
+          <h1 className="nav-title">Stranger's Things</h1>
+          {/* <div>{}</div> */}
+          <div className="header-links">
+            <Link className="link" to="/">
+              POSTS
             </Link>
-          )}
-          <Link className="link" to="/signup">
-            SIGN UP
-          </Link>
+            {token && (
+              <Link className="link" to="/profile">
+                PROFILE
+              </Link>
+            )}
+            <Link className="link" to="/login">
+              {token ? "LOGOUT" : "LOGIN"}
+            </Link>
+            <Link className="link" to="/signup">
+              SIGN UP
+            </Link>
+          </div>
         </div>
         <div>
           <Routes>
-            <Route
-              path="/"
-              element={<LoginForm token={token} setToken={setToken} />}
-            />
-            <Route path="/postlist" element={<PostList token={token} />} />
+            <Route path="/" element={<PostList token={token} />} />
             {token && (
               <Route path="/profile" element={<Profile token={token} />} />
             )}
-
+            <Route
+              path="/login"
+              element={
+                <LoginForm
+                  token={token}
+                  setToken={setToken}
+                  username={username}
+                  setUsername={setUsername}
+                />
+              }
+            />
             <Route path="/signup" element={<SignUp setToken={setToken} />} />
           </Routes>
         </div>

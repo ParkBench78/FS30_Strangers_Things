@@ -50,7 +50,7 @@ export default function SignUp({ token, setToken }) {
   }
   return (
     <>
-      <h1 className="login-title">Sign Up</h1>
+      <h1 className="login-title">✏️ Sign Up ✏️</h1>
 
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">

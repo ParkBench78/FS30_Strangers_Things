@@ -60,14 +60,17 @@ export default function EditPostView({ post, reRender, token }) {
   }, []);
   return (
     <div>
-      <PostView post={post} />
-      <button
-        onClick={() => {
-          setIsEditing(isEditing ? false : true);
-        }}
-      >
-        {isEditing ? "Cancel" : "Edit"}
-      </button>
+      <PostView post={post} token={token} />
+      <br />
+      <div>
+        <button
+          onClick={() => {
+            setIsEditing(isEditing ? false : true);
+          }}
+        >
+          {isEditing ? "Cancel" : "Edit Post"}
+        </button>
+      </div>
       {isEditing && (
         <form onSubmit={handleUpdate}>
           <label>

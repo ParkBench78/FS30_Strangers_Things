@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { APIURL } from "../API/api";
 
-export default function LoginForm({ token, setToken }) {
-  const [username, setUsername] = useState("");
+export default function LoginForm({ token, setToken, username, setUsername }) {
   const [password, setPassword] = useState("");
 
   const login = async () => {
@@ -51,10 +50,20 @@ export default function LoginForm({ token, setToken }) {
 
   return (
     <>
-      <h1 className="login-title">{token ? "Log Out" : "Log In"}</h1>
-      <div>
+      <h1 className="login-title">{token ? "" : "Log In 🔓"}</h1>
+
+      <div id="logoutcontainer">
         {token ? (
-          <button onClick={() => setToken("")}>Log Out</button>
+          <button
+            id="logout"
+            onClick={() => {
+              setToken("");
+              setUsername("");
+              setPassword("");
+            }}
+          >
+            Log Out
+          </button>
         ) : (
           <form className="form" onSubmit={handleSubmit}>
             <div className="input-group">
